@@ -1,0 +1,53 @@
+<div class="container auth-container" >
+    
+    <div class="auth-header">
+    <!-- 
+    	I-element contains form's logo and appearence of a logged-logo class changes
+    	a logo by moving it's background image (which is actually a sprite)
+    -->
+    	<i class="auth-logo" [class.logged-logo]='logged'></i>
+    <!-- ngIf directive shows one of the form's title variants (in spans below) due to two-way bindnig
+    	with the logged field of autorized object in the my-auth.component
+    -->	
+    	<span class="auth-header-text text-logged" *ngIf='logged'>Successful logged</span>
+    	<span class="auth-header-text text-login" *ngIf='!logged'>Login</span>
+    </div>
+    <!--form is shown until the user will pass authentication (and logged variable will become true)-->
+    <div class="form-container" *ngIf='!logged'>
+    <!--ngForm directive collects Controls (elements identified by an ngControl directive) and monitors their properties including their validity, reacts on forms events etc.-->
+	    <form role="form" #form="ngForm" (ngSubmit)="login(form.value)" >
+	      <!--next two form-groups are shown only when the responses 'Auth' field is not equal to 'hotp'-->
+	      <div class="form-group" *ngIf="!hotp">
+	        <label for="login"></label>
+	        <!--User login Input. Each time it's value changes the getInputEl component's function is envoked and following event is been conveying into it. -->
+	        <!-- ngMogel directive provides one way binding of input's value and the components 'name' variable and it's used for clearing the current input's value during submitting the form) -->
+	        <input type="text" class="form-control" ngControl='login' required placeholder='Login' [ngModel]="name" (input)='getInputEl($event)'> 
+	      </div>
+	      <div class="form-group" *ngIf="!hotp">
+	        <label for="firstPass"></label>
+	        <!--User password Input-->
+	        <input type="password" class="form-control" ngControl='firstPass' required placeholder='Password' [ngModel]='password'>
+	      </div>
+	      <!--This form-group contains an input for second password (when a two step authorization is needed). It appears only when the responses 'Auth' field is equal to 'hotp'-->
+	      <div class="form-group" *ngIf="hotp"> 
+	        <label class="hotp-label" for="secondPass"><p>Two step authentication reqired <br/> for this user login</p></label>
+	        <input type="password" class="form-control" ngControl='secondPass' required placeholder='Enter two step auth code'>
+	      </div>
+	      <!--Button that submits current login form (emits a submit event on a form). It becomes hidden when 'dataLoading' and 'banned' component's variables are 'true' at the same time. --> 
+	      <button class="login-button" *ngIf="!dataLoading && !banned" type="submit">
+	      	<!--Span with the text "Login" becomes hidden when 'hotp' component's variable is 'true'-->
+	      	<span class="button-text" #loginMessage [hidden]="hotp">Login</span>
+	      	<!--Span with the text "Continue" becomes hidden when previous Span is shown-->
+	      	<span class="button-text" [hidden]="!loginMessage.hidden">Continue</span>
+	      	<!--Span showing an arrow with css class-->
+	      	<span class="fa fa-long-arrow-right"></span>
+	      </button>
+	      <!--Button that is shown instead of submit button while 'dataLoading' or 'banned' component's variables are set to 'false' (when the http request is sent and no response is recieved or responses 'Auth' property is uqual to 'banned'). Clicking on this button emits no events.-->
+	      <button class="login-button waiting" *ngIf="dataLoading || banned" type="button">
+	      	<span class="button-text flaticon-tool418"></span>
+	      </button>
+	    </form>
+    	
+    </div>
+    
+</div>

@@ -1,0 +1,101 @@
+body{
+	background-color: #F9E8C5;
+}
+
+.auth-container{
+	width:320px;
+	height: 512px;
+	margin: 0 auto;
+	text-align: center;
+	background-color: white;
+	font-family: Helvetica, sans-serif;
+	font-stretch:ultra-expanded;
+
+}
+.auth-container > .auth-header{
+	margin-bottom: 15px;
+	margin-top: 30px;
+	font-size: 20px;
+	font-weight: 100;
+	text-align: left;
+	padding-left: 80px;
+
+}
+.auth-logo{
+	display: inline-block;
+    width: 40px;
+    height: 45px;
+    margin: 0 5px;
+   	background: url("../images/auth-logo.png") no-repeat;
+	background-position: 0 0;
+
+}
+.auth-logo.login-logo{
+}
+.auth-logo.logged-logo{
+	background-position: -46px 0;
+}
+.auth-header-text{
+	display: inline-block;
+	line-height: 2;
+	vertical-align: bottom;
+}
+
+form > .form-control{
+	border: 1px solid #cecfce;
+}
+.form-group>input{
+	padding: 8px 5px 3px 5px;
+	margin-top: 10px;
+	margin-bottom: 3px;
+	width: 0;
+	min-width: 176px;
+	font-size: 10px;
+	vertical-align: bottom;
+	border: 1px solid #cccccc;
+}
+.hotp-label{
+	margin-top: 30px;
+	font-size: 12px;
+}
+.hotp-label > p{
+	margin: 0;
+}
+.hotp-label + input{
+	margin-bottom: 8px;
+}
+.login-button{
+	margin-top: 15px;
+	padding: 5px 15px;
+	min-width: 90px;
+	border: 1px solid #dddddd;
+	border-radius: 16px;
+	background-color: white;	
+	text-align: left;
+}
+.button-text{
+	height: 20px;
+	line-height: 20px;
+	color: #4990cc;
+	vertical-align: middle;
+
+}
+.login-button.waiting{
+	padding-bottom: 1px;
+	padding-top: 3px;
+	text-align: center;
+}
+.login-button>.fa-long-arrow-right:before{
+	margin-left: 0;
+	margin-bottom: 17px;
+	font-size: 10px;
+	color: #4990cc;
+	line-height: 20px;
+}
+.button-text.flaticon-tool418:before{
+	margin-left: 0;
+	font-size: 26px;
+	color: #428bca;
+	padding: 0;
+	line-height: 26px;
+}

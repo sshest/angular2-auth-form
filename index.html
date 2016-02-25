@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en" ng-app="dairyApp">
+<head>
+  <meta charset="utf-8">
+  <title>Authentication form on Angular2</title>
+  <!--1. link stylesheets-->
+  <link rel="stylesheet" href="css/bootstrap.css">
+  <link rel="stylesheet" href="css/bootstrap-responsive.css">
+  <link rel="stylesheet" type="text/css" href="css/flaticon.css">
+  <link rel="stylesheet" type="text/css" href="css/font-awesome.css">
+  <link rel="stylesheet" href="css/auth-app.css">
+  <!-- 2. Load libraries-->
+  <script src="node_modules/es6-shim/es6-shim.min.js"></script>
+  <script src="node_modules/systemjs/dist/system-polyfills.js"></script>
+  <script src="node_modules/angular2/bundles/angular2-polyfills.js"></script>
+  <script src="node_modules/systemjs/dist/system.src.js"></script>
+  <script src="node_modules/typescript/lib/typescript.js"></script>
+  <script src="node_modules/rxjs/bundles/Rx.js"></script>
+  <script src="node_modules/angular2/bundles/angular2.dev.js"></script>
+  <script src="node_modules/angular2/bundles/http.dev.js"></script>
+  <!--<script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>-->
+  <!-- 3. Configure SystemJS -->
+  <script>
+    System.config({
+      packages: {        
+        app: {
+          format: 'register',
+          defaultExtension: 'js'
+        }
+      }
+    });
+    //Load the main.ts file to start angular application
+    System.import('app/main')
+          .then(null, console.error.bind(console));
+  </script>
+</head>
+<body>
+  <!-- 4. Display the application -->
+  <my-app-component></my-app-component>  
+</body>
+</html>
